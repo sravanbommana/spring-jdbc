@@ -1,5 +1,7 @@
 package com.spring.jdbc;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,17 +17,8 @@ public class App
         System.out.println( "Starting transactions" );
         ApplicationContext context = new ClassPathXmlApplicationContext("com/spring/jdbc/config.xml");
         StudentDAO studentDao = context.getBean("studentDao", StudentDAO.class);
-        Student student = new Student();
-        student.setCity("Phoenix");
-        student.setName("Todd");
-        int result = studentDao.insert(student);
-        Student student1 = new Student();
-        student1.setCity("Newyork");
-        student1.setName("Perk");
-        int result2 = studentDao.update(student1);
-        Student student2 = new Student();
-        student2.setName("John");
-        System.out.println("Number of students added " + result);
-        studentDao.delete(student2);
+        Student student = studentDao.getStudnet(2);
+        List<Student> students = studentDao.getAllStudents();
+        System.out.println(students);
     }
 }

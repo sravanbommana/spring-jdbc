@@ -1,9 +1,10 @@
 package com.spring.jdbc.dao;
 
+import java.util.List;
+
 import com.spring.jdbc.model.Student;
 
 public interface StudentDAO {
-	public int insert(Student student);
-	public int update(Student student);
-	public int delete(Student student);
+	public Student getStudnet(int id);
+	public List<Student> getAllStudents();
 }
